@@ -23,7 +23,7 @@ const addNoteHandler = (req, h) => {
 
   if (isSuccess) {
     const res = h.response({
-      status: 'sucsess',
+      status: 'success',
       message: 'Catatan berhasil ditambahkan',
       data: {
         noteId: id,
