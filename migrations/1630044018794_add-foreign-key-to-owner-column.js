@@ -7,6 +7,14 @@ exports.up = (pgm) => {
 
   // mengubah nilai owner pada note yang owner-nya bernilai NULL
   pgm.sql("UPDATE notes SET owner = 'old_notes' WHERE owner = NULL");
+
+  // memberikan constraint foreign key pada owner terhadap kolom id dari tabel users
+  pgm.addConstraint(
+    'notes',
+    'fk_notes.owner_users.id',
+    // eslint-disable-next-line comma-dangle
+    'FOREIGN KEY(owner) REFERENCES users(id) ON DELETE CASCADE'
+  );
 };
 
 exports.down = (pgm) => {
