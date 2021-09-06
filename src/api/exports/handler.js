@@ -21,7 +21,6 @@ class ExportsHandler {
         userId: request.auth.credentials,
         targetEmail: request.payload.targetEmail,
       };
-      console.log(request.payload);
       // kirim pesan ke queue menggunakan this._service.sendMessage
       await this._service.sendMessage('export:notes', JSON.stringify(message));
 
